@@ -21,7 +21,7 @@ phases:
     - echo Building the Docker image...
     - ls -latr
     # update the following line with the name of your own ECR repository
-    - cd docker_build && docker build -t tasker-backend:latest .
+    - docker build -t tasker-backend:latest .
     - cd docker_build && docker save tasker-backend | gzip -c > tasker.tar.gz
     - ls -altr docker_build
     # update the following line with the URI of your own ECR repository (view the Push Commands in the console)
