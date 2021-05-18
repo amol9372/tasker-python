@@ -3,7 +3,7 @@ requests==2.25.1
 Werkzeug==1.0.1
 ssm_parameter_store==19.11.0
 cachecontrol==0.12.6
-dataclasses==0.8
+dataclasses==0.6
 firebase_admin==5.0.0
 flask_cors==3.0.10
 flask_dance==5.0.0
