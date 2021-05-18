@@ -38,6 +38,6 @@ phases:
     #- printf '{"ImageURI":"%s"}' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
 artifacts:
   files:
-    - tasker.tar.gz  
+    - docker_build/tasker.tar.gz  
   discard-paths : yes     
-  base-directory : docker_build
+  # base-directory : docker_build
