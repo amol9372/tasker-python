@@ -8,6 +8,8 @@ WORKDIR /app
 
 COPY . /app
 
+RUN rm -rf .git
+
 RUN pip3 --no-cache install -r requirements.txt
 
 #EXPOSE 5000
