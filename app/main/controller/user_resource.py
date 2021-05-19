@@ -105,7 +105,7 @@ class GoogleLogin(Resource):
         #     return make_response(jsonify({"message": "Email not verfied"}, HTTPStatus.FORBIDDEN))
 
         # save user to application if does not exists
-        user_from_pool: UserPool = UserPool.get_user_from_pool(
+        user_from_pool = UserPool.get_user_from_pool(
             identity['email'])
 
         if not user_from_pool:

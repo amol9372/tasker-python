@@ -42,8 +42,8 @@ class SectionBuilder():
     def __init__(self) -> None:
         pass
 
-    def get_sections(sections: list[Section]):
+    def get_sections(sections):
         return list(map(lambda section: AppSection(section.id, section.name, SectionBuilder.convertDbTasks(section.tasks)).__dict__, sections))
 
-    def convertDbTasks(tasks: list[Task]):
+    def convertDbTasks(tasks):
         return list(map(lambda task: AppTask(task.id, task.name, description="", priority=task.priority, status=task.completed).__dict__, tasks))
