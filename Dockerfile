@@ -24,4 +24,3 @@ RUN pip3 install --no-cache-dir  -r requirements.txt
 #EXPOSE 5000
 
 ENTRYPOINT ["./gunicorn-tasker.sh"]
-#CMD ["app_weather.py"]
