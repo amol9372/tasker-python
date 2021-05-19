@@ -1,4 +1,5 @@
-FROM alpine
+#FROM alpine
+FROM public.ecr.aws/micahhausler/alpine:3.13.5
 
 RUN apk add --no-cache gcc linux-headers musl-dev python3-dev \
     && apk add cmd:pip3
