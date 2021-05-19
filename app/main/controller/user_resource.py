@@ -83,22 +83,26 @@ class LoginUser(Resource):
 @api.route("google-signin")
 class GoogleLogin(Resource):
 
-    @api.param(
-        "id_token", "A JWT from the Google Sign-In SDK to be validated", _in="formData"
-    )
+    # @api.param(
+    #     "id_token", "A JWT from the Google Sign-In SDK to be validated", _in="formData"
+    # )
+    # @api.param(
+    #     "profile", "profile", _in="formData"
+    # )
     @transaction()
     @api.response(HTTPStatus.FORBIDDEN, "Unauthorized")
     def post(self):
         # Validate the identity
         id_token = json.loads(request.data.decode())
         try:
-            identity = validate_id_token(
-                id_token['id_token'], google_app_credentials["client_id"])
+            # identity = validate_id_token(
+            #     id_token['id_token'], google_app_credentials["client_id"])
+            identity = id_token['profile']
         except ValueError:
             return make_response(jsonify({"message": "Invalid ID token"}, HTTPStatus.FORBIDDEN))
 
-        if not identity["email_verified"]:
-            return make_response(jsonify({"message": "Email not verfied"}, HTTPStatus.FORBIDDEN))
+        # if not identity["email_verified"]:
+        #     return make_response(jsonify({"message": "Email not verfied"}, HTTPStatus.FORBIDDEN))
 
         # save user to application if does not exists
         user_from_pool: UserPool = UserPool.get_user_from_pool(
