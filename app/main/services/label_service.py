@@ -32,8 +32,6 @@ class LabelService():
                 label_dict.get(label_id), user_id)
             label = Label(label_detail.id, label_detail.name,
                           label_detail.color, False, shared_label.__dict__)
-            print(type(label_detail.sections))
-            # label.id = label_detail.id
             label_data.append(label.__dict__)
 
         return label_data
