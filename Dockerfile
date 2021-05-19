@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine
 
 RUN apk add --no-cache gcc linux-headers musl-dev python3-dev \
     && apk add cmd:pip3
