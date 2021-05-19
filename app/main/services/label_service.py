@@ -10,7 +10,7 @@ class LabelService():
     def __init__(self) -> None:
         pass
 
-    def get_labels(self, user_id) -> list[Label]:
+    def get_labels(self, user_id):
         user_labels: list[UserLabels] = UserLabels.get_user_labels(user_id)
         label_dict: dict[int, list[UserLabels]] = {}
         # get label details
