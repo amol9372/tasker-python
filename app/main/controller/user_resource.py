@@ -12,7 +12,7 @@ from flask.globals import request
 from app.main.util import UserDto
 from app.main import transaction
 from flask import jsonify, make_response, request, Response
-from google_token import validate_id_token
+#from google_token import validate_id_token
 
 api = UserDto.api
 
