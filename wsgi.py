@@ -1,4 +1,4 @@
-from app_weather import app
+from jwt_app import app
 
 if __name__ == "__main__":
     app.run()
