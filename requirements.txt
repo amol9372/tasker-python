@@ -14,5 +14,3 @@ flask_restx==0.4.0
 flask_sqlalchemy==2.5.1
 SQLAlchemy==1.4.15
 gunicorn==20.1.0
-google-api-python-client==2.2.0
-google-auth==1.28.0
