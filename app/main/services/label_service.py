@@ -36,7 +36,7 @@ class LabelService():
 
         return label_data
 
-    def get_shared_labels(self, user_labels: list[UserLabels], user_id):
+    def get_shared_labels(self, user_labels, user_id):
         users = list(map(lambda user_label: {
                      "user_id": user_label.user_id, "email": user_label.user.email, "primary": user_label.primary_user}, user_labels))
 
