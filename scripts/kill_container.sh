@@ -1,1 +1,1 @@
-docker rm -f tasker-backend || true
+#docker rm -f tasker-backend || true
