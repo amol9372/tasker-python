@@ -1,8 +1,8 @@
 version: 0.0
 os: linux
-#files:
-#  - source: docker/middleman_docker_image.tar.gz
-#    destination: /tmp
+files:
+  - source: ./
+    destination: /tmp/code-deploy_tasker
 hooks:
   ApplicationStop:
     - location: kill_container.sh
