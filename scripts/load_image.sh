@@ -1,4 +1,5 @@
 set -e
 
-unzip tasker.tar.gz
-docker load -i tasker.tar.gz
+ls -altr
+gunzip tasker.tar.gz
+docker load -i tasker.tar
