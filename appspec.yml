@@ -7,11 +7,11 @@ hooks:
   ApplicationStop:
     - location: kill_container.sh
       timeout: 2
-      runas: ec2-user
+      runas: root
   AfterInstall:
     - location: load_image.sh
       timeout: 2.5
-      runas: ec2-user
+      runas: root
   ApplicationStart:
     - location: start_container.sh
       timeout: 2
