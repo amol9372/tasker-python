@@ -38,6 +38,7 @@ phases:
 artifacts:
   files:
     - appspec.yml
+    - 'scripts/*'
     - docker_build/tasker.tar.gz  
   discard-paths : yes     
   # base-directory : docker_build
