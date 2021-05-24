@@ -1,7 +1,7 @@
 #FROM alpine
 FROM public.ecr.aws/micahhausler/alpine:3.13.5
 
-RUN apk add --no-cache gcc linux-headers musl-dev python3-dev \
+RUN apk add --no-cache gcc linux-headers musl-dev python3-dev postgresql-dev\
     && apk add cmd:pip3
 #RUN pip3 install --upgrade pip setuptools wheeli
 RUN pip3 install --upgrade pip

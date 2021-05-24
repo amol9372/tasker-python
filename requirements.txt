@@ -1,4 +1,5 @@
 Werkzeug==1.0.1
+psycopg2==2.8.6
 ssm_parameter_store==19.11.0
 Flask==1.1.2
 requests==2.25.1
@@ -14,4 +15,3 @@ flask_restx==0.4.0
 flask_sqlalchemy==2.5.1
 SQLAlchemy==1.4.15
 gunicorn==20.1.0
-psycopg2==2.8.6
