@@ -77,7 +77,7 @@ class LoginUser(Resource):
 
             return response
         else:
-            return {"status": 200, "message": "Invalid credentials, Please try again"}
+            return {"status": 401, "message": "Invalid credentials, Please try again"}
 
 
 @api.route("google-signin")
@@ -132,7 +132,7 @@ class GoogleLogin(Resource):
             appUser = AppUser(user.id, user.name, user.email)
             response: Response = make_response(jsonify({"access_token": access_token.decode(
                 'UTF-8'), "refresh_token": refresh_token.decode(
-                'UTF-8'), "user": appUser.__dict__}), 200)
+                'UTF-8'), "user": appUser.__dict__, "status": 200}), 200)
             response.headers["Content-Type"] = "application/json"
             return response
         else:
@@ -155,7 +155,7 @@ class GoogleLogin(Resource):
             appUser = AppUser(user.id, user.name, user.email)
             response: Response = make_response(jsonify({"access_token": access_token.decode(
                 'UTF-8'), "refresh_token": refresh_token.decode(
-                'UTF-8'), "user": appUser.__dict__}), 200)
+                'UTF-8'), "user": appUser.__dict__, "status": 200}), 200)
             response.headers["Content-Type"] = "application/json"
             # create new user logic
             return response
