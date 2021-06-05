@@ -12,7 +12,7 @@ class Config:
 
 class DevelopmentConfig(Config):
     # uncomment the line below to use postgres
-    SQLALCHEMY_DATABASE_URI = "postgresql://postgres:avizva9372@postgres-test-db.cqju9q6izhxh.ap-south-1.rds.amazonaws.com/python-test"
+    SQLALCHEMY_DATABASE_URI = "postgresql://postgres:avizva9372@posgres-dbt2-medium.cqju9q6izhxh.ap-south-1.rds.amazonaws.com/tasker"
     DEBUG = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
