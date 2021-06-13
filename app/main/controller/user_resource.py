@@ -70,7 +70,7 @@ class LoginUser(Resource):
             appUser = AppUser(user.id, user.name, user.email)
             response: Response = make_response(jsonify({"access_token": access_token.decode(
                 'UTF-8'), "refresh_token": refresh_token.decode(
-                'UTF-8'), "user": appUser.__dict__}), 200)
+                'UTF-8'), "user": appUser.__dict__, "status": 200}), 200)
             response.headers["Content-Type"] = "application/json"
 
             # save user and tokens in Firestore
