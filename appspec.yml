@@ -1,0 +1,22 @@
+version: 0.0
+os: linux
+files:
+  - source: ./
+    destination: /tmp/code-deploy_tasker
+hooks:
+  BeforeInstall:
+    - location: delete_previous_version.sh
+      timeout: 10
+      runas: root
+  ApplicationStop:
+    - location: kill_container.sh
+      timeout: 10
+      runas: root
+  AfterInstall:
+    - location: load_image.sh
+      timeout: 60
+      runas: root
+  ApplicationStart:
+    - location: start_container.sh
+      timeout: 20
+      runas: ec2-user

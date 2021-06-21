@@ -28,7 +28,7 @@ class Labels(Resource):
     # @api.expect(labels, validate = False)
 
     @jwt_required()
-    def get(self) -> list[Label]:
+    def get(self):
         # data = json.loads(request.data.decode())
         user_id = current_identity.__dict__["id"]
         user_labels = label_service.get_labels(user_id=user_id)

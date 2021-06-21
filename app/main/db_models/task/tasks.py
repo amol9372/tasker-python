@@ -1,4 +1,3 @@
-from grpc import Status
 from app.main import db
 from app.main.db_models.base_model import BaseModel
 

@@ -12,7 +12,7 @@ from flask.globals import request
 from app.main.util import UserDto
 from app.main import transaction
 from flask import jsonify, make_response, request, Response
-from google_token import validate_id_token
+#from google_token import validate_id_token
 
 api = UserDto.api
 
@@ -70,38 +70,42 @@ class LoginUser(Resource):
             appUser = AppUser(user.id, user.name, user.email)
             response: Response = make_response(jsonify({"access_token": access_token.decode(
                 'UTF-8'), "refresh_token": refresh_token.decode(
-                'UTF-8'), "user": appUser.__dict__}), 200)
+                'UTF-8'), "user": appUser.__dict__, "status": 200}), 200)
             response.headers["Content-Type"] = "application/json"
 
             # save user and tokens in Firestore
 
             return response
         else:
-            return {"status": 200, "message": "Invalid credentials, Please try again"}
+            return {"status": 401, "message": "Invalid credentials, Please try again"}
 
 
 @api.route("google-signin")
 class GoogleLogin(Resource):
 
-    @api.param(
-        "id_token", "A JWT from the Google Sign-In SDK to be validated", _in="formData"
-    )
+    # @api.param(
+    #     "id_token", "A JWT from the Google Sign-In SDK to be validated", _in="formData"
+    # )
+    # @api.param(
+    #     "profile", "profile", _in="formData"
+    # )
     @transaction()
     @api.response(HTTPStatus.FORBIDDEN, "Unauthorized")
     def post(self):
         # Validate the identity
         id_token = json.loads(request.data.decode())
         try:
-            identity = validate_id_token(
-                id_token['id_token'], google_app_credentials["client_id"])
+            # identity = validate_id_token(
+            #     id_token['id_token'], google_app_credentials["client_id"])
+            identity = id_token['profile']
         except ValueError:
             return make_response(jsonify({"message": "Invalid ID token"}, HTTPStatus.FORBIDDEN))
 
-        if not identity["email_verified"]:
-            return make_response(jsonify({"message": "Email not verfied"}, HTTPStatus.FORBIDDEN))
+        # if not identity["email_verified"]:
+        #     return make_response(jsonify({"message": "Email not verfied"}, HTTPStatus.FORBIDDEN))
 
         # save user to application if does not exists
-        user_from_pool: UserPool = UserPool.get_user_from_pool(
+        user_from_pool = UserPool.get_user_from_pool(
             identity['email'])
 
         if not user_from_pool:
@@ -128,7 +132,7 @@ class GoogleLogin(Resource):
             appUser = AppUser(user.id, user.name, user.email)
             response: Response = make_response(jsonify({"access_token": access_token.decode(
                 'UTF-8'), "refresh_token": refresh_token.decode(
-                'UTF-8'), "user": appUser.__dict__}), 200)
+                'UTF-8'), "user": appUser.__dict__, "status": 200}), 200)
             response.headers["Content-Type"] = "application/json"
             return response
         else:
@@ -151,7 +155,7 @@ class GoogleLogin(Resource):
             appUser = AppUser(user.id, user.name, user.email)
             response: Response = make_response(jsonify({"access_token": access_token.decode(
                 'UTF-8'), "refresh_token": refresh_token.decode(
-                'UTF-8'), "user": appUser.__dict__}), 200)
+                'UTF-8'), "user": appUser.__dict__, "status": 200}), 200)
             response.headers["Content-Type"] = "application/json"
             # create new user logic
             return response

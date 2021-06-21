@@ -10,7 +10,7 @@ class LabelService():
     def __init__(self) -> None:
         pass
 
-    def get_labels(self, user_id) -> list[Label]:
+    def get_labels(self, user_id):
         user_labels: list[UserLabels] = UserLabels.get_user_labels(user_id)
         label_dict: dict[int, list[UserLabels]] = {}
         # get label details
@@ -32,13 +32,11 @@ class LabelService():
                 label_dict.get(label_id), user_id)
             label = Label(label_detail.id, label_detail.name,
                           label_detail.color, False, shared_label.__dict__)
-            print(type(label_detail.sections))
-            # label.id = label_detail.id
             label_data.append(label.__dict__)
 
         return label_data
 
-    def get_shared_labels(self, user_labels: list[UserLabels], user_id):
+    def get_shared_labels(self, user_labels, user_id):
         users = list(map(lambda user_label: {
                      "user_id": user_label.user_id, "email": user_label.user.email, "primary": user_label.primary_user}, user_labels))
 
