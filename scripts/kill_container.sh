@@ -4,6 +4,7 @@ echo "Killing all active containers"
 
 if [ ! -z "$(docker ps -q)" ]
 then
+   docker ps -q >> /tmp/code-deploy_tasker/killed_containers
    docker kill $(docker ps -q)
 fi
    
